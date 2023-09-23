@@ -1,0 +1,143 @@
+CCS PCM C Compiler, Version 5.109, 43599               23-Sep-23 17:47
+
+               Filename:   C:\Users\dell\Desktop\Count_0_to_9\pic16f877_count_0_to_9.lst
+
+               ROM used:   59 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   6 (2%) at main() level
+                           7 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   022
+0003:  NOP
+.................... #include <16f877.h>
+.................... //////////// Standard Header file for the PIC16F877 device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F877
+.................... 
+.................... #list
+.................... 
+.................... #fuses HS,NOWDT,PUT,NOLVP,NOPROTECT,BROWNOUT
+.................... #use delay (clock = 20000000)
+*
+000C:  MOVLW  22
+000D:  MOVWF  04
+000E:  BCF    03.7
+000F:  MOVF   00,W
+0010:  BTFSC  03.2
+0011:  GOTO   01F
+0012:  MOVLW  06
+0013:  MOVWF  78
+0014:  CLRF   77
+0015:  DECFSZ 77,F
+0016:  GOTO   015
+0017:  DECFSZ 78,F
+0018:  GOTO   014
+0019:  MOVLW  7B
+001A:  MOVWF  77
+001B:  DECFSZ 77,F
+001C:  GOTO   01B
+001D:  DECFSZ 00,F
+001E:  GOTO   012
+001F:  BCF    0A.3
+0020:  BCF    0A.4
+0021:  GOTO   035 (RETURN)
+.................... 
+.................... //!char count_0_to_9 [10] = 
+.................... //!{
+.................... //!   //cathode (âm chung)
+.................... //!   //dp-g-f-e-d-c-b-a, programming élève
+.................... //!   //abcdefgdp
+.................... //!   0b00111111, // 0 cathode
+.................... //!   0b00000110, // 1 cathode
+.................... //!   0b01011011, // 2 cathode
+.................... //!   0b01001111, // 3 cathode
+.................... //!   0b01100110, // 4 cathode
+.................... //!   0b01101101, // 5 cathode
+.................... //!   0b01111101, // 6 cathode
+.................... //!   0b00000111, // 7 cathode
+.................... //!   0b01111111, // 8 cathode
+.................... //!   0b01101111  // 9 cathode
+.................... //!   
+....................    //anode (duong chung)
+.................... //!   0b11000000, // 0
+.................... //!   0b11111001,// 1
+.................... //!   0b10100100, // 2
+.................... //!   0b10110000, // 3
+.................... //!   0b10011001, // 4
+.................... //!   0b10010010, // 5
+.................... //!   0b10000010, //6
+.................... //!   0b11111000, //7
+.................... //!   0b10000000, //8
+.................... //!   0b10010000 //9
+.................... //!};
+.................... 
+.................... void xuat (int n)
+.................... {
+....................    output_b(n);
+*
+0004:  BSF    03.5
+0005:  CLRF   06
+0006:  BCF    03.5
+0007:  MOVF   22,W
+0008:  MOVWF  06
+0009:  BCF    0A.3
+000A:  BCF    0A.4
+000B:  GOTO   030 (RETURN)
+.................... }
+.................... //!
+.................... void main()
+*
+0022:  MOVF   03,W
+0023:  ANDLW  1F
+0024:  MOVWF  03
+0025:  BSF    03.5
+0026:  BSF    1F.0
+0027:  BSF    1F.1
+0028:  BSF    1F.2
+0029:  BCF    1F.3
+002A:  BCF    03.7
+002B:  BCF    03.5
+002C:  CLRF   21
+.................... {
+....................    int tong=0;
+....................    while(1)
+....................    {
+....................       xuat(tong);
+002D:  MOVF   21,W
+002E:  MOVWF  22
+002F:  GOTO   004
+....................       tong=tong+1;
+0030:  MOVLW  01
+0031:  ADDWF  21,F
+....................       delay_ms(100);
+0032:  MOVLW  64
+0033:  MOVWF  22
+0034:  GOTO   00C
+....................       if(tong>=9)
+0035:  MOVF   21,W
+0036:  SUBLW  08
+0037:  BTFSS  03.0
+....................       {
+....................          tong=0;
+0038:  CLRF   21
+....................       }
+0039:  GOTO   02D
+....................    }
+.................... }
+003A:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F72   HS NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

@@ -1,0 +1,28 @@
+#include <16f877.h>
+#fuses hs, nowdt, noprotect, nolvp, put, brownout
+#use delay (clock = 20000000)
+
+//declare sign
+char value = 0;
+//LED display from 0 to 9, respectively
+char count_0_to_9 [10] = 
+{
+   //cathode (âm chung)
+   //dp-g-f-e-d-c-b-a, programming élève
+   //abcdefgdp
+   0b00111111, // 0
+   0b00000110, // 1
+   0b01011011, // 2
+   0b01001111, // 3
+   0b01100110, // 4
+   0b01101101, // 5
+   0b01111101, // 6
+   0b00000111, // 7
+   0b01111111, // 8
+   0b01101111  // 9
+}
+
+main()
+{
+
+}

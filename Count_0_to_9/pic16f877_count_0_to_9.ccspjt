@@ -1,0 +1,35 @@
+[PROJECT]
+Target=pic16f877_count_0_to_9.hex
+Processor_Text=PIC16F877
+CCSVersion=5.109
+Compiler=PCM
+[Target Data]
+FileList=pic16f877_count_0_to_9.c
+[pic16f877_count_0_to_9.c]
+Type=4
+[mru-list]
+1=pic16f877_count_0_to_9.c
+
+[defines]
+buildcount=15
+
+[Opened Files]
+1=pic16f877_count_0_to_9.c
+t1=33
+Count=1
+
+[ProjectLog]
+Days=1
+D1=23-09-2023
+D1_L=4
+D1_L1=[61843]Stopped Editing.
+D1_L2=[62345]Started Editing.
+D1_L3=[64079]Stopped Editing.
+TotalEdit=85
+TotalDebug=0
+D1_E=85
+D1_D=0
+D1_L4=[64079]Project Closed.
+[Units]
+Count=1
+1=pic16f877_count_0_to_9 (main)

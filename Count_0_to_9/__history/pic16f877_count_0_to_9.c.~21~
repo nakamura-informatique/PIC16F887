@@ -1,0 +1,53 @@
+#include <16f877.h>
+#fuses hs, nowdt, noprotect, nolvp, put, brownout
+#use delay (clock = 20000000)
+
+//declare sign
+unsigned char value = 0;
+//LED display from 0 to 9, respectively
+const unsigned char count_0_to_9 [10] = 
+{
+   //cathode (âm chung)
+   //dp-g-f-e-d-c-b-a, programming élève
+   //abcdefgdp
+   0b00111111, // 0 cathode
+   0b00000110, // 1 cathode
+   0b01011011, // 2 cathode
+   0b01001111, // 3 cathode
+   0b01100110, // 4 cathode
+   0b01101101, // 5 cathode
+   0b01111101, // 6 cathode
+   0b00000111, // 7 cathode
+   0b01111111, // 8 cathode
+   0b01101111  // 9 cathode
+   
+   //anode (duong chung)
+   //0b11000000 // 0
+   //0b11111001 // 1
+   //0b10100100 // 2
+   //0b10110000 // 3
+   //0b10011001 // 4
+   //0b10010010 // 5
+   //0b10000010 //6
+   //0b11111000 //7
+   //0b10000000 //8
+   //0b10010000 //9
+};
+
+void main()
+{
+    int i;
+    SET_TRIS_D(0X00);
+    while(1) 
+    {
+        OUTPUT_D = count_0_to_9[value];
+        value++;
+        if (value > 9) 
+        {
+            value = 0;
+        }
+        for (i = 0; i < 50000; i++) 
+        {
+        }
+    }
+}

@@ -1,0 +1,61 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2_LOW
+01B     CCP_2
+01C     CCP_2_HIGH
+021     MAIN.tong
+022     xuat.n
+022     @delay_ms1.P1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  xuat
+00000C  @delay_ms1
+000022  MAIN
+000022  @cinit1
+00002A  @cinit2
+
+Project Directory:
+    C:\Users\dell\Desktop\Count_0_to_9\
+
+Project Files:
+    pic16f877_count_0_to_9.c                                [23-Sep-23 17:47  CRC=8679C5FC]
+    E:\CCS C Compiler 5.109\Install Directory\Devices\16f877.h [06-May-22 15:52  CRC=1BEF2707]
+
+Source signature=BE58140A
+Program memory checksum=0000
+Hex file CRC=1235
+
+Units:
+    C:\Users\dell\Desktop\Count_0_to_9\pic16f877_count_0_to_9 (main)
+
+Compiler Settings:
+    Processor:      PIC16F877
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Output Files:
+    XREF file:   pic16f877_count_0_to_9.xsym
+    Errors:      pic16f877_count_0_to_9.err
+    Ext Symbols: pic16f877_count_0_to_9.esym
+    INHX8:       pic16f877_count_0_to_9.hex
+    Symbols:     pic16f877_count_0_to_9.sym
+    List:        pic16f877_count_0_to_9.lst
+    Debug/COFF:  pic16f877_count_0_to_9.cof
+    Project:     pic16f877_count_0_to_9.ccspjt
+    Call Tree:   pic16f877_count_0_to_9.tre
+    Statistics:  pic16f877_count_0_to_9.STA
