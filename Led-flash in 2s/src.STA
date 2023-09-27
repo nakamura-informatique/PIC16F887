@@ -1,0 +1,52 @@
+
+ROM used:   62/8192 (1%)
+            62/8192 (1%) including unused fragments
+
+            0.0 Average locations per line
+            0.2 Average locations per statement
+
+RAM used:   12/368 (3%) at main() level
+            13/368 (4%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 8
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   13     5   1  src.c
+  676     0   0  E:\CCS C Compiler 5.109\Install Directory\Devices\16f877.h
+ 1354   359  99  E:\CCS C Compiler 5.109\Install Directory\Drivers\stdlib.h
+   32     0   0  E:\CCS C Compiler 5.109\Install Directory\Drivers\stddef.h
+  435     0   0  E:\CCS C Compiler 5.109\Install Directory\Drivers\string.h
+   28     0   0  E:\CCS C Compiler 5.109\Install Directory\Drivers\ctype.h
+----- -----
+ 2538   364 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     20  32    1             @delay_ms1
+0     38  61    1     98  1.7  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               1
+    Statements              364
+    Comments                642
+    Volume (V)              102
+    Difficulty (D)          1.5
+    Effort to implement (E) 150
+    Time to implement (T)   0 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   1
+    Maintainability (MI)    101
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-007FF    58  1986  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

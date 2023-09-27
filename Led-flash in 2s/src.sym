@@ -1,0 +1,67 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020-021 strtok.save
+022-025 _Randseed
+026     MAIN.@SCRATCH1
+027     @delay_ms1.P1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+10D-10E @READ_PROGRAM_MEMORY8.P1
+10D-10E @WRITE_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @delay_ms1
+000018  @cinit1
+000018  MAIN
+000020  @cinit2
+0135  StrtoulGO
+0135  StrtolGO
+
+Project Directory:
+    C:\Users\dell\Desktop\Led-flash in 2s\
+
+Project Files:
+    src.c                                                   [27-Sep-23 23:42  CRC=D872A938]
+    E:\CCS C Compiler 5.109\Install Directory\Devices\16f877.h [06-May-22 15:52  CRC=1BEF2707]
+    E:\CCS C Compiler 5.109\Install Directory\Drivers\stdlib.h [30-Jun-20 14:21  CRC=452E14BB]
+    E:\CCS C Compiler 5.109\Install Directory\Drivers\stddef.h [30-Jan-19 12:26  CRC=897CEC6C]
+    E:\CCS C Compiler 5.109\Install Directory\Drivers\string.h [06-Apr-20 08:43  CRC=B1605627]
+    E:\CCS C Compiler 5.109\Install Directory\Drivers\ctype.h [03-Jan-08 15:55  CRC=2D1F019F]
+
+Source signature=CEAB2ACB
+Program memory checksum=0000
+Hex file CRC=7F0C
+
+Units:
+    C:\Users\dell\Desktop\Led-flash in 2s\src (main)
+
+Compiler Settings:
+    Processor:      PIC16F877
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Output Files:
+    XREF file:   src.xsym
+    Errors:      src.err
+    Ext Symbols: src.esym
+    INHX8:       src.hex
+    Symbols:     src.sym
+    List:        src.lst
+    Debug/COFF:  src.cof
+    Project:     src.ccspjt
+    Call Tree:   src.tre
+    Statistics:  src.STA
