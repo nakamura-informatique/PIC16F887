@@ -1,6 +1,6 @@
-#include <16f877.h>
+#include <16f877.h> //Khai báo sử dụng PIC
 #fuses HS,NOWDT,PUT,NOLVP,NOPROTECT,BROWNOUT
-#use delay (clock = 20000000)
+#use delay (clock = 20000000) //Khai báo sử dụng thạch anh 
 
 char count_0_to_9 [10] = 
 {
