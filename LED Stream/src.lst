@@ -1,0 +1,445 @@
+CCS PCM C Compiler, Version 5.109, 43599               28-Sep-23 07:37
+
+               Filename:   C:\Users\dell\Desktop\LED Stream\src.lst
+
+               ROM used:   352 words (4%)
+                           Largest free fragment is 2048
+               RAM used:   45 (12%) at main() level
+                           52 (14%) worst case
+               Stack used: 1 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0E1
+0003:  NOP
+.................... //Design and Write CCS code to display numbers: 0000, 1111, 2222, 3333, 4444,5555, 6666, 7777, 8888 and 9999 every 1 second
+.................... #include <16F887.h>
+.................... //////////// Standard Header file for the PIC16F887 device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC16F887
+0004:  CLRF   78
+0005:  CLRF   79
+0006:  CLRF   77
+0007:  CLRF   7A
+0008:  MOVF   4D,W
+0009:  BTFSS  03.2
+000A:  GOTO   00E
+000B:  MOVF   4C,W
+000C:  BTFSC  03.2
+000D:  GOTO   028
+000E:  MOVLW  10
+000F:  MOVWF  4E
+0010:  BCF    03.0
+0011:  RLF    4A,F
+0012:  RLF    4B,F
+0013:  RLF    77,F
+0014:  RLF    7A,F
+0015:  MOVF   4D,W
+0016:  SUBWF  7A,W
+0017:  BTFSS  03.2
+0018:  GOTO   01B
+0019:  MOVF   4C,W
+001A:  SUBWF  77,W
+001B:  BTFSS  03.0
+001C:  GOTO   024
+001D:  MOVF   4C,W
+001E:  SUBWF  77,F
+001F:  BTFSS  03.0
+0020:  DECF   7A,F
+0021:  MOVF   4D,W
+0022:  SUBWF  7A,F
+0023:  BSF    03.0
+0024:  RLF    78,F
+0025:  RLF    79,F
+0026:  DECFSZ 4E,F
+0027:  GOTO   010
+0028:  RETURN
+.................... 
+.................... #list
+.................... 
+.................... #use delay (clock=20000000)
+0029:  MOVLW  03
+002A:  SUBWF  4B,F
+002B:  BTFSS  03.0
+002C:  GOTO   037
+002D:  MOVLW  4B
+002E:  MOVWF  04
+002F:  BCF    03.7
+0030:  MOVF   00,W
+0031:  BTFSC  03.2
+0032:  GOTO   037
+0033:  GOTO   035
+0034:  GOTO   035
+0035:  DECFSZ 00,F
+0036:  GOTO   034
+0037:  RETURN
+.................... #fuses HS,NOWDT,PUT,NOLVP,NOPROTECT,BROWNOUT
+.................... #byte PORTD=0x08
+.................... Char maso[10] = 
+.................... {
+....................    //CATHODE CHUNG
+....................    0b00111111,//0
+....................    0b00000110, //1
+....................    0b01011011, //2
+....................    0b01001111,//3
+....................    0b01100110, //4
+....................    0b01101101, //5
+....................    0b01111101, //6
+....................    0b00000111, //7
+....................    0b01111111,//8
+....................    0b01101111//9
+.................... };
+*
+00F6:  MOVLW  3F
+00F7:  BCF    03.6
+00F8:  MOVWF  20
+00F9:  MOVLW  06
+00FA:  MOVWF  21
+00FB:  MOVLW  5B
+00FC:  MOVWF  22
+00FD:  MOVLW  4F
+00FE:  MOVWF  23
+00FF:  MOVLW  66
+0100:  MOVWF  24
+0101:  MOVLW  6D
+0102:  MOVWF  25
+0103:  MOVLW  7D
+0104:  MOVWF  26
+0105:  MOVLW  07
+0106:  MOVWF  27
+0107:  MOVLW  7F
+0108:  MOVWF  28
+0109:  MOVLW  6F
+010A:  MOVWF  29
+.................... int i, nghin, tram, chuc, donvi;
+.................... int16 j;
+.................... int16 hien[10] = {0000,1111,2222,3333,4444,5555,6666,7777,8888,9999};
+010B:  CLRF   31
+010C:  CLRF   32
+010D:  MOVLW  57
+010E:  MOVWF  33
+010F:  MOVLW  04
+0110:  MOVWF  34
+0111:  MOVLW  AE
+0112:  MOVWF  35
+0113:  MOVLW  08
+0114:  MOVWF  36
+0115:  MOVLW  05
+0116:  MOVWF  37
+0117:  MOVLW  0D
+0118:  MOVWF  38
+0119:  MOVLW  5C
+011A:  MOVWF  39
+011B:  MOVLW  11
+011C:  MOVWF  3A
+011D:  MOVLW  B3
+011E:  MOVWF  3B
+011F:  MOVLW  15
+0120:  MOVWF  3C
+0121:  MOVLW  0A
+0122:  MOVWF  3D
+0123:  MOVLW  1A
+0124:  MOVWF  3E
+0125:  MOVLW  61
+0126:  MOVWF  3F
+0127:  MOVLW  1E
+0128:  MOVWF  40
+0129:  MOVLW  B8
+012A:  MOVWF  41
+012B:  MOVLW  22
+012C:  MOVWF  42
+012D:  MOVLW  0F
+012E:  MOVWF  43
+012F:  MOVLW  27
+0130:  MOVWF  44
+.................... void hienthi(int16 a)
+.................... {
+....................    nghin=a/1000;
+*
+0038:  MOVF   49,W
+0039:  MOVWF  4B
+003A:  MOVF   48,W
+003B:  MOVWF  4A
+003C:  MOVLW  03
+003D:  MOVWF  4D
+003E:  MOVLW  E8
+003F:  MOVWF  4C
+0040:  CALL   004
+0041:  MOVF   78,W
+0042:  MOVWF  2B
+....................    a=a%1000;
+0043:  MOVF   49,W
+0044:  MOVWF  4B
+0045:  MOVF   48,W
+0046:  MOVWF  4A
+0047:  MOVLW  03
+0048:  MOVWF  4D
+0049:  MOVLW  E8
+004A:  MOVWF  4C
+004B:  CALL   004
+004C:  MOVF   77,W
+004D:  MOVWF  48
+004E:  MOVF   7A,W
+004F:  MOVWF  49
+....................    tram=a/100;
+0050:  MOVF   49,W
+0051:  MOVWF  4B
+0052:  MOVF   48,W
+0053:  MOVWF  4A
+0054:  CLRF   4D
+0055:  MOVLW  64
+0056:  MOVWF  4C
+0057:  CALL   004
+0058:  MOVF   78,W
+0059:  MOVWF  2C
+....................    a=a%100;
+005A:  MOVF   49,W
+005B:  MOVWF  4B
+005C:  MOVF   48,W
+005D:  MOVWF  4A
+005E:  CLRF   4D
+005F:  MOVLW  64
+0060:  MOVWF  4C
+0061:  CALL   004
+0062:  MOVF   77,W
+0063:  MOVWF  48
+0064:  MOVF   7A,W
+0065:  MOVWF  49
+....................    chuc=a/10;
+0066:  MOVF   49,W
+0067:  MOVWF  4B
+0068:  MOVF   48,W
+0069:  MOVWF  4A
+006A:  CLRF   4D
+006B:  MOVLW  0A
+006C:  MOVWF  4C
+006D:  CALL   004
+006E:  MOVF   78,W
+006F:  MOVWF  2D
+....................    donvi=a%10;
+0070:  MOVF   49,W
+0071:  MOVWF  4B
+0072:  MOVF   48,W
+0073:  MOVWF  4A
+0074:  CLRF   4D
+0075:  MOVLW  0A
+0076:  MOVWF  4C
+0077:  CALL   004
+0078:  MOVF   77,W
+0079:  MOVWF  2E
+....................    output_C(0b11111101);
+007A:  MOVLW  00
+007B:  MOVWF  45
+007C:  BSF    03.5
+007D:  CLRF   07
+007E:  MOVLW  FD
+007F:  BCF    03.5
+0080:  MOVWF  07
+....................    output_D(maso[nghin]);
+0081:  MOVLW  20
+0082:  ADDWF  2B,W
+0083:  MOVWF  04
+0084:  BCF    03.7
+0085:  MOVF   00,W
+0086:  MOVWF  4A
+0087:  BSF    03.5
+0088:  CLRF   08
+0089:  BCF    03.5
+008A:  MOVF   4A,W
+008B:  MOVWF  08
+....................    delay_us(300);
+008C:  MOVLW  02
+008D:  MOVWF  4A
+008E:  MOVLW  95
+008F:  MOVWF  4B
+0090:  CALL   029
+0091:  DECFSZ 4A,F
+0092:  GOTO   08E
+....................    output_C(0b11111011);
+0093:  MOVLW  00
+0094:  MOVWF  45
+0095:  BSF    03.5
+0096:  CLRF   07
+0097:  MOVLW  FB
+0098:  BCF    03.5
+0099:  MOVWF  07
+....................    output_D(maso[tram]);
+009A:  MOVLW  20
+009B:  ADDWF  2C,W
+009C:  MOVWF  04
+009D:  BCF    03.7
+009E:  MOVF   00,W
+009F:  MOVWF  4A
+00A0:  BSF    03.5
+00A1:  CLRF   08
+00A2:  BCF    03.5
+00A3:  MOVF   4A,W
+00A4:  MOVWF  08
+....................    delay_us(300);
+00A5:  MOVLW  02
+00A6:  MOVWF  4A
+00A7:  MOVLW  95
+00A8:  MOVWF  4B
+00A9:  CALL   029
+00AA:  DECFSZ 4A,F
+00AB:  GOTO   0A7
+....................    output_C(0b11110111);
+00AC:  MOVLW  00
+00AD:  MOVWF  45
+00AE:  BSF    03.5
+00AF:  CLRF   07
+00B0:  MOVLW  F7
+00B1:  BCF    03.5
+00B2:  MOVWF  07
+....................    output_D(maso[chuc]);
+00B3:  MOVLW  20
+00B4:  ADDWF  2D,W
+00B5:  MOVWF  04
+00B6:  BCF    03.7
+00B7:  MOVF   00,W
+00B8:  MOVWF  4A
+00B9:  BSF    03.5
+00BA:  CLRF   08
+00BB:  BCF    03.5
+00BC:  MOVF   4A,W
+00BD:  MOVWF  08
+....................    delay_us(300);
+00BE:  MOVLW  02
+00BF:  MOVWF  4A
+00C0:  MOVLW  95
+00C1:  MOVWF  4B
+00C2:  CALL   029
+00C3:  DECFSZ 4A,F
+00C4:  GOTO   0C0
+....................    output_C(0b11101111);
+00C5:  MOVLW  00
+00C6:  MOVWF  45
+00C7:  BSF    03.5
+00C8:  CLRF   07
+00C9:  MOVLW  EF
+00CA:  BCF    03.5
+00CB:  MOVWF  07
+....................    output_D(maso[donvi]);
+00CC:  MOVLW  20
+00CD:  ADDWF  2E,W
+00CE:  MOVWF  04
+00CF:  BCF    03.7
+00D0:  MOVF   00,W
+00D1:  MOVWF  4A
+00D2:  BSF    03.5
+00D3:  CLRF   08
+00D4:  BCF    03.5
+00D5:  MOVF   4A,W
+00D6:  MOVWF  08
+....................    delay_us(300);
+00D7:  MOVLW  02
+00D8:  MOVWF  4A
+00D9:  MOVLW  95
+00DA:  MOVWF  4B
+00DB:  CALL   029
+00DC:  DECFSZ 4A,F
+00DD:  GOTO   0D9
+00DE:  BCF    0A.3
+00DF:  BCF    0A.4
+00E0:  GOTO   155 (RETURN)
+.................... }
+.................... void main()
+00E1:  MOVF   03,W
+00E2:  ANDLW  1F
+00E3:  MOVWF  03
+00E4:  MOVLW  FF
+00E5:  MOVWF  45
+00E6:  BSF    03.5
+00E7:  BSF    03.6
+00E8:  MOVF   09,W
+00E9:  ANDLW  C0
+00EA:  MOVWF  09
+00EB:  BCF    03.6
+00EC:  BCF    1F.4
+00ED:  BCF    1F.5
+00EE:  MOVLW  00
+00EF:  BSF    03.6
+00F0:  MOVWF  08
+00F1:  BCF    03.5
+00F2:  CLRF   07
+00F3:  CLRF   08
+00F4:  CLRF   09
+00F5:  BCF    03.7
+.................... {
+....................    i=0;
+*
+0131:  CLRF   2A
+....................    output_C(0b11111111);
+0132:  MOVLW  00
+0133:  MOVWF  45
+0134:  BSF    03.5
+0135:  CLRF   07
+0136:  MOVLW  FF
+0137:  BCF    03.5
+0138:  MOVWF  07
+....................    while (1)
+....................    {
+....................       for (j=0;j<=666;j++)
+0139:  CLRF   30
+013A:  CLRF   2F
+013B:  MOVF   30,W
+013C:  SUBLW  02
+013D:  BTFSS  03.0
+013E:  GOTO   159
+013F:  BTFSS  03.2
+0140:  GOTO   145
+0141:  MOVF   2F,W
+0142:  SUBLW  9A
+0143:  BTFSS  03.0
+0144:  GOTO   159
+....................       {
+....................          hienthi(hien[i]);
+0145:  BCF    03.0
+0146:  RLF    2A,W
+0147:  ADDLW  31
+0148:  MOVWF  04
+0149:  BCF    03.7
+014A:  INCF   04,F
+014B:  MOVF   00,W
+014C:  MOVWF  47
+014D:  DECF   04,F
+014E:  MOVF   00,W
+014F:  MOVWF  46
+0150:  MOVF   47,W
+0151:  MOVWF  49
+0152:  MOVF   46,W
+0153:  MOVWF  48
+0154:  GOTO   038
+0155:  INCF   2F,F
+0156:  BTFSC  03.2
+0157:  INCF   30,F
+0158:  GOTO   13B
+....................       }
+....................    i++;
+0159:  INCF   2A,F
+....................    if(i>9)
+015A:  MOVF   2A,W
+015B:  SUBLW  09
+015C:  BTFSS  03.0
+....................       {
+....................          i=0;
+015D:  CLRF   2A
+....................       }
+015E:  GOTO   139
+....................    }
+.................... }
+015F:  SLEEP
+
+Configuration Fuses:
+   Word  1: 2FE2   HS NOWDT PUT MCLR NOPROTECT NOCPD BROWNOUT IESO FCMEN NOLVP NODEBUG
+   Word  2: 3FFF   BORV40 NOWRT

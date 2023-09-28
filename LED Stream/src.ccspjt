@@ -1,0 +1,33 @@
+[PROJECT]
+Target=src.hex
+Processor_Text=PIC16F887
+CCSVersion=5.109
+Compiler=PCM
+[Target Data]
+FileList=src.c
+[src.c]
+Type=4
+[mru-list]
+1=src.c
+
+[defines]
+buildcount=3
+
+[Opened Files]
+1=src.c
+t1=1
+Count=1
+[Units]
+Count=1
+1=src (main)
+
+[ProjectLog]
+Days=1
+D1=28-09-2023
+D1_L=2
+D1_L1=[27461]Stopped Editing.
+TotalEdit=8
+TotalDebug=0
+D1_E=8
+D1_D=0
+D1_L2=[27461]Project Closed.
